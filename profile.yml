@@ -1,10 +1,10 @@
 ---
 full_name: Johnny Codemaster
 summary: >
-  Enthusiastic and innovative software developer with a knack for turning caffeine into code. 
-  Armed with a wizard's wand (keyboard) and a magical hat (headphones), I've crafted digital 
-  wonders for over a decade. My spells range from web enchantments to mobile charms, all sprinkled 
-  with a dash of humor and a pinch of pixel-perfect precision. Seeking new quests to conquer 
+  Enthusiastic and innovative software developer with a knack for turning caffeine into code.
+  Armed with a wizard's wand (keyboard) and a magical hat (headphones), I've crafted digital
+  wonders for over a decade. My spells range from web enchantments to mobile charms, all sprinkled
+  with a dash of humor and a pinch of pixel-perfect precision. Seeking new quests to conquer
   and challenges to turn into triumphs.
 
 contact_details:
@@ -54,7 +54,7 @@ experience:
       - AlchemyTensor
       - Potion Pandas
   - title: Frontend Wizard
-    company_name: Code Kingdoms Corp 
+    company_name: Code Kingdoms Corp
     company_url: https://www.code-kingdoms.company/
     dates: 01/2013 - 12/2015
     location: Enchanted Kingdom, Code Kingdoms
@@ -100,8 +100,8 @@ training:
 
 skills: [PyroScript, ElixirCraft, HTML6, WizardJS, CharmSQL, Mystic Cloud Computing, AlchemyTensor, MageQuery]
 
-oss_projects: 
-  - title: "SpellCheck.js: A magical library for error-free incantations in JavaScript"  
+oss_projects:
+  - title: "SpellCheck.js: A magical library for error-free incantations in JavaScript"
     url: https://www.open-source.oss/johnnycodemaster/spellcheck.js
     description: A handy library of regex sorcery for JavaScript magic without mishaps.
   - title: "PotentCSS: Brew powerful stylesheets with ease using this CSS preprocessor"
@@ -115,4 +115,3 @@ publications:
     url: https://wizards-gazette.pub/art-of-debugging
   - title: "Sorcery in Software: Harnessing the Power of Abstractions"
     url: https://code-conjurors-journal.pub/sorcery-in-software
-

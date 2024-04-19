@@ -26,7 +26,7 @@ _{{ item.dates }}, {{ item.location }}_
 {% for bullet_point in item.bullet_points %}
  * {{ bullet_point -}}
 {% endfor %}
-  
+
 _{{ item.used_technologies|join(", ") }}_
 {% endif -%}
 {% endfor %}
@@ -59,7 +59,7 @@ _{{ item.dates }}_
 
 {{ skills|join(", ") }}.
 
-   
+
 ## Open Source Projects
 {% for item in oss_projects %}
  * [{{ item.title }}]({{ item.url }})

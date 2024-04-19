@@ -55,4 +55,3 @@ cv-md: "$(output_dir)"
 .PHONY: cv-html
 cv-html: "$(output_dir)"
 	@jinja2 --strict "$(templates_dir)/cv.html" "$(root_dir)/profile.yml" > "$(output_dir)/$(CV_FILENAME).html"
-
