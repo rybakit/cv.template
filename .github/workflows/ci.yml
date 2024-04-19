@@ -1,0 +1,46 @@
+name: Generate CVs
+
+on:
+  workflow_dispatch:
+  push:
+  
+# env:
+#   CV_FILENAME: J_Codemaster_CV
+ 
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+          pip install jinja2-cli
+
+      - name: Generate CVs
+        run: make cv && ls -l output
+
+      - name: Retrieve Version
+        id: version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            echo "PREFIX=$(date '+%Y-%m-%d')" >> $GITHUB_OUTPUT
+            echo "HASH=$(find output -type f -exec md5sum {} \; | sort -k 2 | cksum | awk '{print $1;}')" >> $GITHUB_OUTPUT
+            echo "PREV_HASH=$(gh release list --limit 1 --json 'tagName' --jq '.[].tagName | split(".")[-1]')" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        if: steps.version.outputs.HASH != steps.version.outputs.PREV_HASH 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: v${{ steps.version.outputs.PREFIX }}.${{ steps.version.outputs.HASH }}
+        run: |
+          gh release create "$TAG" --title "$TAG"
+          gh release upload "$TAG" output/*
+
