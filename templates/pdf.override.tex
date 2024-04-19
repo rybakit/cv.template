@@ -1,0 +1,17 @@
+% Generate reproducible PDFs
+% https://github.com/jgm/pandoc/issues/6539
+% https://tex.stackexchange.com/a/313605
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+
+% Suppress page numbers
+\pagestyle{empty}
+
+% PDF Properties
+\hypersetup{
+  pdftitle={ {{ full_name }}'s CV },
+  pdfauthor={ {{ full_name }} },
+  pdfsubject={CV},
+  pdfkeywords={ {{ skills|join(", ") }} }
+}
