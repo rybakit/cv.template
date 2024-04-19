@@ -27,7 +27,7 @@ _{{ item.dates }}, {{ item.location }}_
  * {{ bullet_point -}}
 {% endfor %}
 
-_{{ item.used_technologies|join(", ") }}_
+_{{ item.keywords|join(", ") }}_
 {% endif -%}
 {% endfor %}
 
