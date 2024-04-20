@@ -1,5 +1,6 @@
 ---
 full_name: Johnny Codemaster
+location: Technolandia
 summary: >
   Enthusiastic and innovative software developer with a knack for turning caffeine into code.
   Armed with a wizard's wand (keyboard) and a magical hat (headphones), I've crafted digital
@@ -9,8 +10,8 @@ summary: >
 
 contact_details:
   Email: johnny@codemaster.me
-  GitPub: https://gitpub.site/johnnycodemaster
-  LinkedIO: https://linkedio.site/io/johnnycodemaster
+  GitHub: https://github.com/johnnycodemaster
+  LinkedIn: https://www.linkedin.com/in/johnnycodemaster
 
 experience:
   - title: Senior Sorcerer
@@ -83,19 +84,24 @@ experience:
       - MageQuery
 
 education:
-  - title: Bachelor of Science in Computer Science, Magic University
-    dates: 2005-2010
+  - school: Magic University
+    field_of_study: Bachelor of Science in Computer Science
+    dates: 2005 - 2010
 
 certificates:
   - title: Certificate in Advanced Spellcasting Techniques, Wizard Academy
+    date: 03/2022
   - title: Certificate in Cloud Sorcery, Cloud Academy
     url: https://www.cloud-academy.cert/johnnycodemaster
   - title: Certificate in Cybersecurity Enchantment, Cryptic College
+    date: 07/2019
     url: https://www.cryptic-college.cert/johnnycodemaster
 
 training:
   - title: Training in Potion Crafting for Software Engineers, Enchanted Institute
+    dates: 01/2021 - 07/2021
   - title: Training in Agile Spellcasting, Agile Wizards Institute
+    dates: 05/2022
     url: https://www.agile-wizards.training/johnnycodemaster
 
 skills: [PyroScript, ElixirCraft, HTML6, WizardJS, CharmSQL, Mystic Cloud Computing, AlchemyTensor, MageQuery]
