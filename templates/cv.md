@@ -2,9 +2,11 @@
 
 # {{ full_name }}
 
-{% for key, value in contact_details.items() %}
-{{- key }}: [{{ value }}]({{ value }}){% if not loop.last %} \{% endif %}
+{{ location }} |
+{% for key, value in contact_details.items() -%}
+[{{ key }}]({{ value }}){% if not loop.last %} | {% endif -%}
 {% endfor %}
+
 
 ## Summary
 
@@ -19,7 +21,7 @@
 ### Earlier Experience
 _Varios locations_
 {% endif %}
- * {{ item.title }}, [{{ item.company_name }}]({{ item.company_url }}) _({{ item.dates }})_
+ * {{ item.title }}, [{{ item.company_name }}]({{ item.company_url }}), _{{ item.dates }}_
 {%- else %}
 ### {{ item.title }}, [{{ item.company_name }}]({{ item.company_url }})
 _{{ item.dates }}, {{ item.location }}_
@@ -34,24 +36,27 @@ _{{ item.keywords|join(", ") }}_
 
 ## Education
 {% for item in education %}
-### {{ item.title }}
-_{{ item.dates }}_
+**{{ item.school }}**, {{ item.field_of_study }}, _{{ item.dates }}_
 {% endfor %}
 
-## Certifications and Training
+## Certifications
 {% for item in certificates %}
 {%- if item.url is defined and item.url|length %}
  * [{{ item.title }}]({{ item.url }})
 {%- else %}
  * {{ item.title }}
 {%- endif -%}
+{%- if item.date is defined and item.date|length %}, _{{ item.date }}_{% endif -%}
 {% endfor %}
+
+## Training
 {%- for item in training -%}
 {% if item.url is defined and item.url|length %}
  * [{{ item.title }}]({{ item.url }})
 {%- else %}
  * {{ item.title }}
 {%- endif -%}
+{%- if item.dates is defined and item.dates|length %}, _{{ item.dates }}_{% endif -%}
 {% endfor %}
 
 

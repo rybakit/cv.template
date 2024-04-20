@@ -1,36 +1,66 @@
 {%- set max_exp_items_to_show = 3 -%}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>{{ full_name }}'s CV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css">
+    <style>
+	    .markdown-body {
+    		box-sizing: border-box;
+    		min-width: 200px;
+    		max-width: 980px;
+    		margin: 0 auto;
+    		padding: 45px;
+    	}
+
+    	@media (max-width: 767px) {
+	    	.markdown-body {
+	    		padding: 15px;
+	    	}
+	    }
+
+        h3 + em {
+            position: relative;
+            top: -12px;
+        }
+        
+        .light {
+            color: #777;
+        }
+
+        .light2 {
+            color: #ccc;
+        }
+    </style>
 </head>
-<body>
+<body class="markdown-body">
     <h1>{{ full_name }}</h1>
 
-    {% for key, value in contact_details.items() %}
-        {{- key }}: <a href="{{ value }}">{{ value }}</a><br>
+    {{ location }} &nbsp;|&nbsp;
+    {%- for key, value in contact_details.items() %}
+        <a href="{{ value }}" title="{{ key }}">{{ key }}</a>{% if not loop.last %} <span class="light2">|</span> {% endif %}
     {% endfor %}
 
     <h2>Summary</h2>
     {{ summary }}
 
-    <h2>Experience<h2>
+    <h2>Experience</h2>
     {% for item in experience %}
     {%- if loop.index > max_exp_items_to_show %}
     {%- if loop.index == max_exp_items_to_show + 1 %}
     <h3>Earlier Experience</h3>
-    <em>Varios locations</em>
+    <em class="light">Varios locations</em>
     <ul>
     {% endif %}
-      <li>{{ item.title }}, <a href="{{ item.company_url }}">{{ item.company_name }}</a> ({{ item.dates }})</li>
+      <li>{{ item.title }}, <a href="{{ item.company_url }}">{{ item.company_name }}</a>, <em class="light">{{ item.dates }}</em></li>
     {%- if loop.last %}
         </ul>
     {% endif %}
     {%- else %}
     <h3>{{ item.title }}, <a href="{{ item.company_url }}">{{ item.company_name }}</a></h3>
-    <em>{{ item.dates}}, {{ item.location }}</em>
+    <em class="light">{{ item.dates}}, {{ item.location }}</em>
     <ul>
     {% for bullet_point in item.bullet_points %}
         <li>{{ bullet_point -}}</li>
@@ -40,27 +70,36 @@
     {% endif -%}
     {% endfor %}
 
-    <h2>Education<h2>
+    <h2>Education</h2>
     {% for item in education %}
-    <h3 style="margin-bottom:0">{{ item.title }}</h3>
-    <em>{{ item.dates}}</em>
+    <strong>{{ item.school }}</strong>, {{ item.field_of_study }}, <em class="light">{{ item.dates}}</em><br />
     {% endfor %}
 
-    <h2>Certifications and Training</h2>
+    <h2>Certifications</h2>
     <ul>
     {% for item in certificates %}
-    {% if item.url is defined and item.url|length %}
-        <li><a href="{{ item.url }}">{{ item.title -}}</a></li>
-    {% else %}
-        <li>{{ item.title -}}</li>
-    {% endif %}
+        <li>
+        {% if item.url is defined and item.url|length %}
+            <a href="{{ item.url }}">{{ item.title -}}</a>
+        {%- else %}
+            {{ item.title -}}
+        {% endif %}
+        {%- if item.date is defined and item.date|length %}, <em class="light">{{ item.date }}</em>{% endif %}
+        </li>
     {% endfor %}
+    </ul>
+
+    <h2>Training</h2>
+    <ul>
     {% for item in training %}
-    {% if item.url is defined and item.url|length %}
-        <li><a href="item.url">{{ item.title }}</a></li>
-    {% else %}
-        <li>{{ item.title }}</li>
-    {% endif %}
+    <li>
+        {% if item.url is defined and item.url|length %}
+            <a href="{{ item.url }}">{{ item.title -}}</a>
+        {%- else %}
+            {{ item.title -}}
+        {% endif %}
+        {%- if item.dates is defined and item.dates|length %}, <em class="light">{{ item.dates }}</em>{% endif %}
+        </li>
     {% endfor %}
     </ul>
 
