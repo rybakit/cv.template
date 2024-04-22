@@ -22,12 +22,16 @@ $(clr_info)Targets:$(clr_reset)
     cv-html $(clr_comment)Generate CV in HTML format$(clr_reset)
 endef
 
-.PHONY: help
-help:
-	@echo $(info $(help))
+define render
+	jinja2 --strict --extension jinja2_markdown.MarkdownExtension "$(templates_dir)/$(1)" "$(root_dir)/profile.yml"
+endef
 
 "$(output_dir)":
 	@mkdir -p "$(output_dir)"
+
+.PHONY: help
+help:
+	@echo $(info $(help))
 
 .PHONY: clean
 clean:
@@ -38,8 +42,8 @@ cv: | "$(output_dir)" cv-pdf cv-md cv-html
 
 .PHONY: cv-pdf
 cv-pdf:
-	@jinja2 --strict "$(templates_dir)/pdf.override.tex" "$(root_dir)/profile.yml" > "$(root_dir)/.pdf.override.tex" && \
-	jinja2 --strict "$(templates_dir)/cv.md" "$(root_dir)/profile.yml" | SOURCE_DATE_EPOCH=0 pandoc -o "$(output_dir)/$(CV_FILENAME).pdf" \
+	@$(call render,pdf.override.tex) > "$(root_dir)/.pdf.override.tex"
+	@$(call render,cv.md) | SOURCE_DATE_EPOCH=0 pandoc -o "$(output_dir)/$(CV_FILENAME).pdf" \
 		--pdf-engine=xelatex \
 		--include-in-header="$(root_dir)/.pdf.override.tex" \
 		-V mainfont="DejaVu Serif" \
@@ -54,8 +58,8 @@ cv-pdf:
 
 .PHONY: cv-md
 cv-md: "$(output_dir)"
-	@jinja2 --strict "$(templates_dir)/cv.md" "$(root_dir)/profile.yml" > "$(output_dir)/$(CV_FILENAME).md"
+	@$(call render,cv.md) > "$(output_dir)/$(CV_FILENAME).md"
 
 .PHONY: cv-html
 cv-html: "$(output_dir)"
-	@jinja2 --strict "$(templates_dir)/cv.html" "$(root_dir)/profile.yml" > "$(output_dir)/$(CV_FILENAME).html"
+	@$(call render,cv.html) > "$(output_dir)/$(CV_FILENAME).html"
