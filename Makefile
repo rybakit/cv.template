@@ -40,16 +40,16 @@ cv: | "$(output_dir)" cv-pdf cv-md cv-html
 cv-pdf:
 	@jinja2 --strict "$(templates_dir)/pdf.override.tex" "$(root_dir)/profile.yml" > "$(root_dir)/.pdf.override.tex" && \
 	jinja2 --strict "$(templates_dir)/cv.md" "$(root_dir)/profile.yml" | SOURCE_DATE_EPOCH=0 pandoc -o "$(output_dir)/$(CV_FILENAME).pdf" \
-	    --pdf-engine=xelatex \
-	    --include-in-header="$(root_dir)/.pdf.override.tex" \
+		--pdf-engine=xelatex \
+		--include-in-header="$(root_dir)/.pdf.override.tex" \
 		-V mainfont="DejaVu Serif" \
 		-V sansfont="DejaVu Sans" \
-    	-V monofont="DejaVu Sans Mono" \
+		-V monofont="DejaVu Sans Mono" \
 		-V documentclass:scrartcl \
-	    -V geometry:a4paper \
-	    -V geometry:margin=1cm \
-	    -V colorlinks=true \
-	    -V linkcolor=blue
+		-V geometry:a4paper \
+		-V geometry:margin=1cm \
+		-V colorlinks=true \
+		-V linkcolor=blue
 	@rm -f "$(root_dir)/.pdf.override.tex"
 
 .PHONY: cv-md
