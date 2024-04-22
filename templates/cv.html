@@ -116,7 +116,7 @@
                 {{ item.description }}
             {%- endif %}
             {%- if item.note is defined and item.note|length %}
-            <br /><em class="light">{{ item.note }}</em>
+            <br /><em class="light">{% markdown %}{{ item.note }}{% endmarkdown %}</em>
             {%- endif %}
         </li>
     {% endfor %}

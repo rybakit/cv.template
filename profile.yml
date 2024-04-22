@@ -114,7 +114,7 @@ oss_projects:
   - title: PotentCSS
     description: Brew powerful stylesheets with ease using this CSS preprocessor
     url: https://www.open-source.oss/johnnycodemaster/potent.css
-    note: A magical potion brewed with ElixirCraft and Enchanted Sass for flawless page prestidigitation.
+    note: A magical potion brewed with [ElixirCraft](https://elixircraft.site) and Enchanted Sass for flawless page prestidigitation.
   - title: EnchantedUI
     description: A collection of bewitching UI components for web enchanters
     url: https://www.open-source.oss/johnnycodemaster/enchanted.ui

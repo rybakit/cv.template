@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra
-          pip install jinja2-cli
+          pip install jinja2-cli jinja2_markdown
 
       - name: Generate CVs
         run: make cv && ls -l output
