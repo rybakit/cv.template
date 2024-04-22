@@ -25,7 +25,7 @@
             position: relative;
             top: -12px;
         }
-        
+
         .light {
             color: #777;
         }
@@ -39,9 +39,10 @@
     <h1>{{ full_name }}</h1>
 
     {{ location }} &nbsp;|&nbsp;
-    {%- for key, value in contact_details.items() %}
-        <a href="{{ value }}" title="{{ key }}">{{ key }}</a>{% if not loop.last %} <span class="light2">|</span> {% endif %}
-    {% endfor %}
+    <a href="mailto:{{ contact_details.email }}">{{ contact_details.email }}</a> <span class="light2">|</span>
+    <a href="{{ contact_details.github }}">GitHub</a> <span class="light2">|</span>
+    <a href="{{ contact_details.linkedin }}">LinkedIn</a>
+
 
     <h2>Summary</h2>
     {{ summary }}
@@ -110,13 +111,17 @@
     <ul>
     {% for item in oss_projects %}
         <li>
-            <a href="{{ item.url }}">{{ item.title }}</a>
-            {% if item.description is defined and item.description|length %}
+            <strong><a href="{{ item.url }}">{{ item.title }}</a>: </strong>
+            {% if item.description is defined and item.description|length -%}
                 {{ item.description }}
-            {% endif %}
+            {%- endif %}
+            {%- if item.note is defined and item.note|length %}
+            <br /><em class="light">{{ item.note }}</em>
+            {%- endif %}
         </li>
     {% endfor %}
     </ul>
+
 
     <h2>Publications</h2>
     <ul>

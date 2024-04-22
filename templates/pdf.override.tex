@@ -1,18 +1,24 @@
 % Generate reproducible PDFs
 % https://github.com/jgm/pandoc/issues/6539
 % https://tex.stackexchange.com/a/313605
-\pdfinfoomitdate=1
-\pdftrailerid{}
-\pdfsuppressptexinfo=-1
+\special{pdf:trailerid [
+    <00000000000000000000000000000000>
+    <00000000000000000000000000000000>
+]}
+
+% Disable hyphenation
+% https://tex.stackexchange.com/a/5039
+\righthyphenmin=62
+\lefthyphenmin=62
 
 % Suppress page numbers
 \pagestyle{empty}
 
-% PDF Properties
+% Set PDF properties
 \hypersetup{
-  pdfcreator={ https://github.com/rybakit/cv.template },
-  pdftitle={ {{ full_name }}'s CV },
-  pdfauthor={ {{ full_name }} },
-  pdfsubject={ CV },
-  pdfkeywords={ {{ skills|join(", ") }} }
+  pdfcreator={https://github.com/rybakit/cv.template},
+  pdftitle={ {{- full_name }}'s CV},
+  pdfauthor={ {{- full_name -}} },
+  pdfsubject={CV},
+  pdfkeywords={ {{- skills|join(", ") -}} }
 }

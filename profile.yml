@@ -1,6 +1,6 @@
 ---
 full_name: Johnny Codemaster
-location: Technolandia
+location: Techville, Cybertopia
 summary: >
   Enthusiastic and innovative software developer with a knack for turning caffeine into code.
   Armed with a wizard's wand (keyboard) and a magical hat (headphones), I've crafted digital
@@ -9,9 +9,9 @@ summary: >
   and challenges to turn into triumphs.
 
 contact_details:
-  Email: johnny@codemaster.me
-  GitHub: https://github.com/johnnycodemaster
-  LinkedIn: https://www.linkedin.com/in/johnnycodemaster
+  email: johnny@codemaster.me
+  github: https://github.com/johnnycodemaster
+  linkedin: https://www.linkedin.com/in/johnnycodemaster
 
 experience:
   - title: Senior Sorcerer
@@ -107,13 +107,16 @@ training:
 skills: [PyroScript, ElixirCraft, HTML6, WizardJS, CharmSQL, Mystic Cloud Computing, AlchemyTensor, MageQuery]
 
 oss_projects:
-  - title: "SpellCheck.js: A magical library for error-free incantations in JavaScript"
+  - title: "SpellCheck.js"
+    description: A magical library for error-free incantations in JavaScript
     url: https://www.open-source.oss/johnnycodemaster/spellcheck.js
-    description: A handy library of regex sorcery for JavaScript magic without mishaps.
-  - title: "PotentCSS: Brew powerful stylesheets with ease using this CSS preprocessor"
+    note: A handy library of regex sorcery for JavaScript magic without mishaps.
+  - title: PotentCSS
+    description: Brew powerful stylesheets with ease using this CSS preprocessor
     url: https://www.open-source.oss/johnnycodemaster/potent.css
-    description: A magical potion brewed with ElixirCraft and Enchanted Sass for flawless page prestidigitation.
-  - title: "EnchantedUI: A collection of bewitching UI components for web enchanters"
+    note: A magical potion brewed with ElixirCraft and Enchanted Sass for flawless page prestidigitation.
+  - title: EnchantedUI
+    description: A collection of bewitching UI components for web enchanters
     url: https://www.open-source.oss/johnnycodemaster/enchanted.ui
 
 publications:

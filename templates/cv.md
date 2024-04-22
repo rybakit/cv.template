@@ -2,10 +2,7 @@
 
 # {{ full_name }}
 
-{{ location }} |
-{% for key, value in contact_details.items() -%}
-[{{ key }}]({{ value }}){% if not loop.last %} | {% endif -%}
-{% endfor %}
+{{ location }} | [{{ contact_details.email }}](mailto:{{ contact_details.email }}) | [GitHub]({{ contact_details.github }}) | [LinkedIn]({{ contact_details.linkedin }})
 
 
 ## Summary
@@ -66,11 +63,16 @@ _{{ item.keywords|join(", ") }}_
 
 ## Open Source Projects
 {% for item in oss_projects %}
- * [{{ item.title }}]({{ item.url }})
-   {% if item.description is defined and item.description|length -%}{% if not loop.last %} \{% endif %}
+ * [{{ item.title }}]({{ item.url }}):{{ " " }}
+   {%- if item.description is defined and item.description|length -%}
    {{ item.description }}
    {%- endif %}
+   {%- if item.note is defined and item.note|length %}
+
+   _{{ item.note }}_
+   {%- endif %}
 {% endfor %}
+
 
 ## Publications
 {% for item in publications %}
